@@ -23,7 +23,8 @@ def send_email(subject, body):
 
 @app.route('/')
 def home():
-    user_ip = request.remote_addr
+    # Get the real IP if behind a proxy (like Render)
+    user_ip = request.headers.get('X-Forwarded-For', request.remote_addr).split(',')[0].strip()
     location_data = {}
 
     try:
