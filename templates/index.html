@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Welcome</title>
@@ -6,5 +6,43 @@
 <body>
     <h1>Hello Visitor 👋</h1>
     <p>This is a demo educational site.</p>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to our site!</h1>
+    <p>Thank you for visiting. This page collects visitor information for educational purposes.</p>
+    
+    <script>
+        // For more advanced educational purposes, you could gather more details
+        // such as battery level, connection type, etc. using the browser APIs
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                // This would request explicit user permission for precise location
+                const preciseLocation = position.coords.latitude + ',' + position.coords.longitude;
+                
+                // You could send this to your server via fetch API
+                fetch('/precise-location?coords=' + preciseLocation, {
+                    method: 'GET'
+                }).then(response => {
+                    console.log('Location sent');
+                });
+            });
+        }
+    </script>
 </body>
 </html>
